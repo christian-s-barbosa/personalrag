@@ -4,7 +4,7 @@ from .config import Settings
 from .rag import VaultRag
 
 
-def run_mcp(settings: Settings, name: str | None = None) -> None:
+def build_server(settings: Settings, name: str | None = None):
     from mcp.server.mcpserver import MCPServer
 
     rag = VaultRag(settings)
@@ -39,4 +39,8 @@ def run_mcp(settings: Settings, name: str | None = None) -> None:
         resposta, fontes = rag.responder(query, filters=filtros or None)
         return f"{resposta}\n\nFontes:\n" + "\n".join(f"- {f}" for f in fontes)
 
-    server.run()
+    return server
+
+
+def run_mcp(settings: Settings, name: str | None = None) -> None:
+    build_server(settings, name).run()
