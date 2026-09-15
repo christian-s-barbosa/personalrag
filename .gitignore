@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# Ambiente virtual
+.venv/
+
+# Índice gerado
+chroma/
+
+# Segredos
+.env
