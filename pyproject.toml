@@ -1,13 +1,27 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ragcore"
+name = "vault-rag"
 version = "0.1.0"
-description = "Núcleo reutilizável de RAG sobre bases de conhecimento em Markdown"
+description = "RAG (Retrieval-Augmented Generation) reutilizável sobre bases de conhecimento em Markdown"
 readme = "README.md"
 requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Christian Schmitz Barbosa", email = "cschmitz725@gmail.com" }]
+keywords = ["rag", "retrieval-augmented-generation", "llm", "markdown", "embeddings", "mcp"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Text Processing :: Markup :: Markdown",
+]
 dependencies = [
     "chromadb",
     "sentence-transformers",
@@ -19,8 +33,16 @@ dependencies = [
 [project.optional-dependencies]
 mcp = ["mcp"]
 
+[project.urls]
+Homepage = "https://github.com/christian-s-barbosa/vault-rag"
+Repository = "https://github.com/christian-s-barbosa/vault-rag"
+Issues = "https://github.com/christian-s-barbosa/vault-rag/issues"
+
 [project.scripts]
-ragcore = "ragcore.cli:main"
+vault-rag = "vault_rag.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+vault_rag = ["py.typed"]

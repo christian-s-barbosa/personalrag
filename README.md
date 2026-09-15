@@ -1,11 +1,11 @@
-# ragcore
+# vault-rag
 
 Núcleo reutilizável de **RAG** (Retrieval-Augmented Generation) sobre bases de conhecimento em **Markdown**.
 
 Separa o **motor** (esta biblioteca) do **conteúdo/config** de cada projeto. Cada base define um `Settings` e usa a API:
 
 ```python
-from ragcore import VaultRag, Settings
+from vault_rag import VaultRag, Settings
 
 settings = Settings(vault_dir="..", collection="git")
 rag = VaultRag(settings)
@@ -18,10 +18,17 @@ print(rag.responder("como desfazer o último commit"))
 E o servidor MCP:
 
 ```python
-from ragcore.mcp import run_mcp
+from vault_rag.mcp import run_mcp
 from config import settings
 
 run_mcp(settings)
+```
+
+## Instalação
+
+```bash
+pip install vault-rag          # núcleo
+pip install "vault-rag[mcp]"   # com o servidor MCP
 ```
 
 ## Módulos
@@ -34,5 +41,5 @@ run_mcp(settings)
 | `retrieve.py` | Busca (+ rerank opcional) |
 | `generate.py` | LLM compatível com OpenAI |
 | `rag.py` | Classe `VaultRag` |
-| `cli.py` | `python -m ragcore index/query` |
+| `cli.py` | `python -m vault_rag index/query` |
 | `mcp.py` | `run_mcp(settings)` |
